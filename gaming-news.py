@@ -9,7 +9,7 @@ def get(url):
     #returns the page content as html
     global scraper
     scraper = BeautifulSoup(page.content, 'html.parser')
-    print(url)
+    
     
     
 get("https://za.ign.com/article/news?keyword__type=game")
@@ -19,16 +19,16 @@ get("https://za.ign.com/article/news?keyword__type=game")
 def parse():
     #gets all the divs with m as thier class name
     val = scraper.find_all("div","m")
-    #gets the specified elements from the html
+    head = []
+    p = []
+    links = []
+    #gets the specified elements and puts them in arrays
     for a in val:
-      print(a.h3.text)
-      print(a.p.text)
-      print(a.h3.a['href'])
+        head.append(a.h3.text)
+        p.append(a.p.text)
+        links.append(a.h3.a['href'])
     
     
-    
-   
-
 parse()
     
 
